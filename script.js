@@ -1,40 +1,20 @@
-// Cryptocurrency symbols mapping
-const cryptoSymbols = {
-    bitcoin: '₿',
-    ethereum: 'Ξ',
-    solana: '◎',
-    bnb: 'BNB',
-    cardano: '₳',
-    polygon: '⬟',
-    // Using geometric shapes for other cryptos
-    white: '✦',
-    gray: '✧',
-    white2: 'Ł',
-    gray2: '₮'
-};
-
-// Symbol classes for styling
-const symbolClasses = ['bitcoin', 'ethereum', 'solana', 'bnb', 'cardano', 'polygon', 'white', 'gray', 'white', 'gray'];
+// Cryptocurrency symbols (styled neon gray and white)
+const cryptoSymbols = ['₿', 'Ξ', '₮', 'Ł', '◎', '₳', '⬟', 'Ɖ', '✦', '✧', '✶', '✷'];
 
 let stars = [];
 let scrollPosition = 0;
 let isScrolling = false;
-let stopScrollThreshold = 0; // Will be calculated based on solutions section position
+let stopScrollThreshold = 0; // Will be calculated based on contact section position
 
 function createStar() {
     const star = document.createElement('div');
     star.className = 'star';
     
-    // Randomly select a symbol
-    const symbolKeys = Object.keys(cryptoSymbols);
-    const randomSymbol = symbolKeys[Math.floor(Math.random() * symbolKeys.length)];
-    star.textContent = cryptoSymbols[randomSymbol];
+    // Random crypto/star symbol
+    star.textContent = cryptoSymbols[Math.floor(Math.random() * cryptoSymbols.length)];
     
-    // Add class for styling
-    const classIndex = symbolKeys.indexOf(randomSymbol);
-    if (classIndex < symbolClasses.length) {
-        star.classList.add(symbolClasses[classIndex] || 'white');
-    }
+    // Neon gray or white only (no colored styling)
+    star.classList.add(Math.random() > 0.5 ? 'white' : 'gray');
     
     // Random horizontal position
     const leftPosition = Math.random() * 100;
